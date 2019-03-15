@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>RPG-PWA</title>
+    <meta name="generator" content="RPG-PWA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="rpg-pwa">
+
+    <!--
+      The `<base>` tag below is present to support two advanced deployment options:
+      1) Differential serving. 2) Serving from a non-root path.
+      Instead of manually editing the `<base>` tag yourself, you should generally either:
+      a) Add a `basePath` property to the build configuration in your `polymer.json`.
+      b) Use the `--base-path` command-line option for `polymer build`.
+    -->
+    <base href="/">
+
+    <link rel="icon" href="favicon.png">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" crossorigin="use-credentials" href="manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#007ac0">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="RPG-PWA">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RPG-PWA">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="ios-icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="ios-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="ios-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="ios-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="ios-icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#007ac0">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Default twitter cards -->
+    <meta name="twitter:card" content="A minimalist view of Odo with search first">
+    <meta name="twitter:site" content="@username">
+    <meta property="og:type" content="https://odo.corp.qualtrics.com">
+    <meta property="og:site_name" content="odo-assistant">
+    <meta property="og:image" content="icon-144x144.png" />
+
+    <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <script>
+      // Load and register pre-caching Service Worker
+      if (window.navigator && 'serviceWorker' in navigator) {
+        let path = window.location.pathname.replace(/[^\/]+\.html$/, '')
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register(path + '/service-worker.js', {
+            scope: path,
+          });
+        });
+      }
+      // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+      // https://github.com/reactjs/redux/issues/2907
+      window.process = { env: { NODE_ENV: 'production' } };
+    </script>
+  </head>
+  <body>
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
+    <div id="app">
+      <!-- Inject any pre-rendered HTML here: -->
+      {{prerender}}
+    </div>
+  </body>
+</html>

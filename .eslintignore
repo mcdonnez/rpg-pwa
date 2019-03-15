@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+.nyc_output
+.vscode
+coverage
+log
+node_modules
+*.log
+dist
+extension/newtab/
+extension/vendor/
