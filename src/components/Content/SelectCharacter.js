@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import CreateYourOwn from './SelectCharacter/CreateYourOwn';
 import SelectPrebuilt from './SelectCharacter/SelectPrebuilt';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
-	app: {}
+	selectCharacter: {
+		display: 'flex',
+		justifyContent: 'space-around',
+		alignItems: 'center',
+		width: '100%',
+		maxWidth: 900,
+	}
 });
 
 class RPG extends React.Component {
@@ -26,8 +33,11 @@ class RPG extends React.Component {
 		const {classes} = this.props;
 
 		return (
-			<div>
+			<div className={classes.selectCharacter}>
 				<CreateYourOwn />
+				<Typography>
+					OR
+				</Typography>
 				<SelectPrebuilt />
 			</div>
 		);

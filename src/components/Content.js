@@ -12,7 +12,9 @@ const styles = theme => ({
 		padding: 0,
 		paddingBottom: theme.spacing.unit * 7,
 		display: 'flex',
-		flex: 1
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center,'
 	}
 });
 
