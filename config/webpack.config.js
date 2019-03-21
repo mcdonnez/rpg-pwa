@@ -19,7 +19,8 @@ module.exports = {
 					return '/';
 				},
 			}
-		}
+		},
+		disableHostCheck: true
 	},
 	optimization: {
 		splitChunks: {
