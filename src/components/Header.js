@@ -5,6 +5,8 @@ import Logo from './Header/Logo';
 import Settings from './Header/Settings';
 import Link from '@material-ui/core/Link';
 import {Link as RouterLink} from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 const HomeLink = props => <RouterLink to="/" {...props} />;
 const CharacterSelect = props => <RouterLink to="/character" {...props} />;
@@ -12,13 +14,14 @@ const CharacterProfile = props => <RouterLink to="/character/fighter" {...props}
 
 const styles = theme => ({
 	app: {},
-	header: {
-		height: '120px',
-		padding: '15px 50px',
-		position: 'relative',
+	appBar: {
 		display: 'flex',
-		alignItems: 'flex-end',
-		backgroundColor: theme.palette.primary.main,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
+	},
+	settings: {
+
 	},
 });
 
@@ -39,22 +42,17 @@ class RPG extends React.Component {
 		const {classes} = this.props;
 
 		return (
-			<div className={classes.header}>
-				<Logo></Logo>
-				<Settings></Settings>
-				<nav>
-					<ul>
-						<li>
-							<Link component={HomeLink}>Home</Link>
-						</li>
-						<li>
-							<Link component={CharacterSelect}>About</Link>
-						</li>
-						<li>
-							<Link component={CharacterProfile}>Users</Link>
-						</li>
-					</ul>
-				</nav>
+			<div className={classes.root}>
+				<AppBar position="static">
+					<Toolbar className={classes.appBar}>
+						<div className={classes.logo}>
+							<Logo />
+						</div>
+						<div className={classes.settings}>
+							<Settings />
+						</div>
+					</Toolbar>
+				</AppBar>
 			</div>
 		);
 	}

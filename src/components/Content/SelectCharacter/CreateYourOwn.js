@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
-const styles = {
+const styles = theme => ({
 	card: {
 		width: 300,
 	},
@@ -23,25 +23,25 @@ const styles = {
 	pos: {
 		marginBottom: 12,
 	},
-};
+});
 
 function SimpleCard(props) {
 	const {classes} = props;
 	const bull = <span className={classes.bullet}>•</span>;
 
 	return (
-		<CardActionArea className={classes.card}>
-			<Card>
+		<Card className={classes.card}>
+			<CardActionArea >
 				<CardContent>
 					<Typography variant="h4" color="textPrimary" gutterBottom>
-					Create Your Own
+						Create Your Own
 					</Typography>
 					<Typography color="textSecondary" gutterBottom>
-					Build your character from the ground up.
+						Build your character from the ground up.
 					</Typography>
 				</CardContent>
-			</Card>
-		</CardActionArea>
+			</CardActionArea>
+		</Card>
 	);
 }
 

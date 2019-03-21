@@ -15,7 +15,8 @@ const styles = theme => ({
 		minHeight: '100vh',
 		height: '100%',
 		maxWidth: '100%',
-		position: 'relative'
+		position: 'relative',
+		backgroundColor: theme.palette.grey.A200
 	},
 });
 

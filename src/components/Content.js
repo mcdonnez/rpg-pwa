@@ -8,7 +8,6 @@ import SelectCharacter from './Content/SelectCharacter';
 const styles = theme => ({
 	app: {},
 	content: {
-		backgroundColor: theme.palette.grey[200],
 		padding: 0,
 		paddingBottom: theme.spacing.unit * 7,
 		display: 'flex',
