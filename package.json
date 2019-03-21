@@ -13,15 +13,9 @@
     "build:stage": "webpack --config ./config/webpack.config.js --mode production",
     "serve": "npm run build:dev -- --hostname 0.0.0.0 --port $PORT"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "jest-environment-jsdom": "^24.0.0",
-    "jest-environment-jsdom-global": "^1.1.0",
-    "jest-fetch-mock": "^1.6.5",
-    "url-polyfill": "^1.0.13"
-  },
-  "dependencies": {
     "workbox-webpack-plugin": "^3.6.3",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.1",

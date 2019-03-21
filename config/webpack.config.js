@@ -56,10 +56,10 @@ module.exports = {
 				test: /\.css$/,
 				use: ['style-loader', 'css-loader']
 			},
-			{
-				test: /src\/index.html/,
-				loader: 'prerender-loader?string',
-			},
+			// {
+			// 	test: /src\/index.html/,
+			// 	loader: 'prerender-loader?string',
+			// },
 			{
 				type: 'javascript/auto',
 				test: /manifest\.json$/,
