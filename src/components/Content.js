@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import CharacterPage from './Content/CharacterPage';
 import SelectCharacter from './Content/SelectCharacter';
 
@@ -39,7 +39,11 @@ class RPG extends React.Component {
 
 		return (
 			<div className={classes.content}>
-				<Route path="/" exact component={Index} />
+				<Route path="/" exact render={() => {
+					return <Redirect to="/character"/>;
+				}}
+				// component={Index}
+				/>
 				<Route path="/character" exact component={SelectCharacter} />
 				<Route path="/character/:character" component={CharacterPage} />
 			</div>

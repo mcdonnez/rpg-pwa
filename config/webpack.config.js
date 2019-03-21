@@ -11,10 +11,10 @@ module.exports = {
 	},
 	devServer: {
 		historyApiFallback: true,
-		host: '0.0.0.0',
+		host: 'localhost',
 		proxy: {
 			'/': {
-				target: `http://0.0.0.0:${process.env.PORT}`,
+				target: `http://localhost:${process.env.PORT}`,
 				pathRewrite: function (path, req) {
 					return '/';
 				},
