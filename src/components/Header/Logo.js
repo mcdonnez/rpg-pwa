@@ -4,11 +4,17 @@ import {withStyles} from '@material-ui/core/styles';
 import ScoreIcon from '@material-ui/icons/Score';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Link from '@material-ui/core/Link';
+import {Link as RouterLink} from 'react-router-dom';
 
 const styles = theme => ({
 	logo: {
 		display: 'flex',
 		flexDirection: 'row'
+	},
+	link: {
+		textDecoration: 'none',
+		color: 'inherit'
 	},
 	logoName: {
 		marginLeft: theme.spacing.unit,
@@ -35,9 +41,15 @@ class RPG extends React.Component {
 
 		return (
 			<div className={classes.logo}>
-				<IconButton color="inherit">
-					<ScoreIcon fontSize="large"/>
-				</IconButton>
+				<Link component={() => (
+					<RouterLink to="/" className={classes.link}>
+						<IconButton color="inherit">
+							<ScoreIcon fontSize="large"/>
+						</IconButton>
+					</RouterLink>
+				)} color="inherit" underline="none">
+				</Link>
+
 				<Typography color="inherit" variant="h5" className={classes.logoName}>RPG - PWA</Typography>
 			</div>
 		);

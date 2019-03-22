@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import {Link as RouterLink} from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
 	card: {
@@ -20,6 +22,10 @@ const styles = theme => ({
 	title: {
 		fontSize: 14,
 	},
+	link: {
+		textDecoration: 'none',
+		color: 'inherit'
+	},
 	pos: {
 		marginBottom: 12,
 	},
@@ -31,16 +37,22 @@ function SimpleCard(props) {
 
 	return (
 		<Card className={classes.card}>
-			<CardActionArea >
-				<CardContent>
-					<Typography variant="h4" color="textPrimary" gutterBottom>
+			<Link component={() => (
+				<RouterLink to="/character/fighter" className={classes.link}>
+					<CardActionArea >
+						<CardContent>
+							<Typography variant="h4" color="textPrimary" gutterBottom>
 						Create Your Own
-					</Typography>
-					<Typography color="textSecondary" gutterBottom>
+							</Typography>
+							<Typography color="textSecondary" gutterBottom>
 						Build your character from the ground up.
-					</Typography>
-				</CardContent>
-			</CardActionArea>
+							</Typography>
+						</CardContent>
+					</CardActionArea>
+				</RouterLink>
+			)} color="inherit" underline="none">
+			</Link>
+
 		</Card>
 	);
 }

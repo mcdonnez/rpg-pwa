@@ -28,6 +28,10 @@ const styles = theme => ({
 	pos: {
 		marginBottom: 12,
 	},
+	link: {
+		textDecoration: 'none',
+		color: 'inherit'
+	},
 	paper: {
 		position: 'absolute',
 		width: theme.spacing.unit * 100,
@@ -111,7 +115,7 @@ class SimpleCard extends React.Component {
 						<div className={classes.content}>
 							<Card className={classes.characterCard}>
 								<Link component={() => (
-									<RouterLink to="/character/fighter">
+									<RouterLink to="/character/fighter" className={classes.link}>
 										<CardActionArea onClick={() => { }}>
 											<CardHeader title={'Fighter'} />
 											<CardContent>
