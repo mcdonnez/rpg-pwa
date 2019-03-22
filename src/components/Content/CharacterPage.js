@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Fighter from '../../characters/Fighter';
+import characters from '../../characters';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -33,10 +34,17 @@ TabContainer.propTypes = {
 class RPG extends React.Component {
 	constructor(props) {
 		super(props);
+		const characterType = props.match.params.character;
+		const Character = characters[characterType] || characters['default'];
+		this.state = {
+			value: 0,
+			character: new Character()
+		};
 	}
 
 	static propTypes = {
-		classes: PropTypes.object.isRequired
+		classes: PropTypes.object.isRequired,
+		match: PropTypes.any,
 	}
 
 	state = {

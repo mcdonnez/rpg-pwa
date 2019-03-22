@@ -38,7 +38,7 @@ function SimpleCard(props) {
 	return (
 		<Card className={classes.card}>
 			<Link component={() => (
-				<RouterLink to="/character/fighter" className={classes.link}>
+				<RouterLink to="/character/custom" className={classes.link}>
 					<CardActionArea >
 						<CardContent>
 							<Typography variant="h4" color="textPrimary" gutterBottom>

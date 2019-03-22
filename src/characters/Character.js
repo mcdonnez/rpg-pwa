@@ -1,5 +1,5 @@
 class Character {
-	constructor(options) {
+	constructor(options = {}) {
 		this.name = options.name || 'Base Character',
 		this.fortitude = options.fortitude || 0;
 		this.resolve = options.resolve || 0;
