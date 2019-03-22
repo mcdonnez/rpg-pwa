@@ -47,18 +47,14 @@ class RPG extends React.Component {
 		match: PropTypes.any,
 	}
 
-	state = {
-		value: 0,
-		character: new Fighter()
-	};
-
 	handleChange = (event, value) => {
 		this.setState({value});
 	};
 
 	handleCharacterChange = (field) => (evt) => {
 		const {character} = this.state;
-		character[field] = evt.target.value;
+		character[field] = parseInt(evt.target.value) || '';
+		character.calculateAbilities();
 		this.setState({
 			character: character
 		});
