@@ -106,7 +106,7 @@ class RPG extends React.Component {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{c.armorArray.map((armor) => (
+								{c.armorArray && c.armorArray.map((armor) => (
 									<TableRow key={armor.name}>
 										<TableCell padding="dense" component="th" scope="row">{armor.name}</TableCell>
 										<TableCell align="center" padding="dense">{armor.bonus}</TableCell>
