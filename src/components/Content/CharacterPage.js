@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import Fighter from '../../characters/Fighter';
 import characters from '../../characters';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Stats from './Stats';
+import Defend from './Defend';
 
 const styles = theme => ({
 	root: {
@@ -75,7 +75,7 @@ class RPG extends React.Component {
 				</AppBar>
 				{value === 0 && <TabContainer><Stats character={this.state.character} handleChange={this.handleCharacterChange}></Stats></TabContainer>}
 				{value === 1 && <TabContainer>Attack</TabContainer>}
-				{value === 2 && <TabContainer>Defend</TabContainer>}
+				{value === 2 && <TabContainer><Defend character={this.state.character}></Defend></TabContainer>}
 			</div>
 		);
 	}
