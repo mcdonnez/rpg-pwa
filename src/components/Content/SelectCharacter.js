@@ -11,7 +11,13 @@ const styles = theme => ({
 		justifyContent: 'space-around',
 		alignItems: 'center',
 		width: '100%',
+		flexWrap: 'wrap',
 		maxWidth: 900,
+		maxHeight: 400,
+	},
+	or: {
+		width: 100,
+		textAlign: 'center'
 	}
 });
 
@@ -35,7 +41,7 @@ class RPG extends React.Component {
 		return (
 			<div className={classes.selectCharacter}>
 				<CreateYourOwn />
-				<Typography>
+				<Typography className={classes.or}>
 					OR
 				</Typography>
 				<SelectPrebuilt />

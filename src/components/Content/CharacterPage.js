@@ -69,12 +69,12 @@ class RPG extends React.Component {
 				<AppBar position="static" classes={{root: classes.appBar}}>
 					<Tabs value={value} onChange={this.handleChange}>
 						<Tab label="Stats" />
-						<Tab label="Attack" />
+						<Tab label="Skill Use" />
 						<Tab label="Defend" />
 					</Tabs>
 				</AppBar>
 				{value === 0 && <TabContainer><Stats character={this.state.character} handleChange={this.handleCharacterChange}></Stats></TabContainer>}
-				{value === 1 && <TabContainer>Attack</TabContainer>}
+				{value === 1 && <TabContainer>Skill Use</TabContainer>}
 				{value === 2 && <TabContainer><Defend character={this.state.character}></Defend></TabContainer>}
 			</div>
 		);

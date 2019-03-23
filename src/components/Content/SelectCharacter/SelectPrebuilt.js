@@ -34,7 +34,8 @@ const styles = theme => ({
 	},
 	paper: {
 		position: 'absolute',
-		width: theme.spacing.unit * 100,
+		width: '100%',
+		maxWidth: theme.spacing.unit * 100,
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: theme.shadows[5],
 		outline: 'none',
@@ -54,6 +55,10 @@ const styles = theme => ({
 	content: {
 		backgroundColor: theme.palette.grey[200],
 		padding: theme.spacing.unit * 4,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexWrap: 'wrap'
 	}
 });
 

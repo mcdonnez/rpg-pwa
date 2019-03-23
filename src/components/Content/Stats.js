@@ -47,7 +47,8 @@ class RPG extends React.Component {
 		open: false,
 		physical: false,
 		mental: false,
-		wielding: false
+		wielding: false,
+		vitals: true,
 	};
 
 	handleClick = (type) => () => {
@@ -60,89 +61,98 @@ class RPG extends React.Component {
 		return (
 			<div className={classes.root}>
 				<Card classes={{root: classes.card}}>
-					<CardHeader title="Vitals"/>
 					<CardContent>
 						<List>
-							<ListItem>
-								<ListItemText>
-									<TextField
-										label="Fortitude"
-										className={classes.textField}
-										value={c.fortitude}
-										type="number"
-										onChange={handleChange('fortitude')}
-										margin="dense"
-									/>
-								</ListItemText>
+							<ListItem button onClick={this.handleClick('vitals')}>
+								<ListItemText primary="Vitals" primaryTypographyProps={{variant: 'headline'}} />
+								{this.state.vitals ? <ExpandLess /> : <ExpandMore />}
 							</ListItem>
-							<ListItem>
-								<ListItemText>
-									<TextField
-										label="Resolve"
-										className={classes.textField}
-										value={c.resolve}
-										type="number"
-										onChange={handleChange('resolve')}
-										margin="dense"
-									/>
-								</ListItemText>
-							</ListItem>
-							<ListItem>
-								<ListItemText>
-									<TextField
-										label="Resilience"
-										className={classes.textField}
-										value={c.resilience}
-										type="number"
-										onChange={handleChange('resilience')}
-										margin="dense"
-									/>
-								</ListItemText>
-							</ListItem>
-							<ListItem>
-								<ListItemText>
-									<TextField
-										label="Size"
-										className={classes.textField}
-										value={c.size}
-										type="number"
-										onChange={handleChange('size')}
-										margin="dense"
-									/>
-								</ListItemText>
-							</ListItem>
-							<ListItem>
-								<ListItemText>
-									<TextField
-										label="Bulk"
-										className={classes.textField}
-										value={c.bulk}
-										type="number"
-										onChange={handleChange('bulk')}
-										margin="dense"
-									/>
-								</ListItemText>
-							</ListItem>
-							<ListItem>
-								<ListItemText>
-									<TextField
-										label="Burden"
-										className={classes.textField}
-										value={c.burden}
-										type="number"
-										onChange={handleChange('burden')}
-										margin="dense"
-									/>
-								</ListItemText>
-							</ListItem>
+							<Collapse in={this.state.vitals} timeout="auto" unmountOnExit>
+								<List>
+									<ListItem>
+										<ListItemText>
+											<TextField
+												label="Fortitude"
+												className={classes.textField}
+												value={c.fortitude}
+												type="number"
+												onChange={handleChange('fortitude')}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+									<ListItem>
+										<ListItemText>
+											<TextField
+												label="Resolve"
+												className={classes.textField}
+												value={c.resolve}
+												type="number"
+												onChange={handleChange('resolve')}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+									<ListItem>
+										<ListItemText>
+											<TextField
+												label="Resilience"
+												className={classes.textField}
+												value={c.resilience}
+												type="number"
+												onChange={handleChange('resilience')}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+									<ListItem>
+										<ListItemText>
+											<TextField
+												label="Size"
+												className={classes.textField}
+												value={c.size}
+												type="number"
+												onChange={handleChange('size')}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+									<ListItem>
+										<ListItemText>
+											<TextField
+												label="Bulk"
+												className={classes.textField}
+												value={c.bulk}
+												type="number"
+												onChange={handleChange('bulk')}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+									<ListItem>
+										<ListItemText>
+											<TextField
+												label="Burden"
+												className={classes.textField}
+												value={c.burden}
+												type="number"
+												onChange={handleChange('burden')}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+								</List>
+							</Collapse>
 						</List>
 					</CardContent>
 				</Card>
 				<div className={classes.root} style={{flexDirection: 'column'}}>
 					<Card className={classes.card}>
-						<CardHeader title="Abilities"></CardHeader>
 						<CardContent>
 							<List>
+								<ListItem>
+									<ListItemText primary="Abilities" primaryTypographyProps={{variant: 'headline'}} />
+								</ListItem>
 								<ListItem button onClick={this.handleClick('physical')}>
 									<ListItemIcon>
 										<Avatar className={classes.avatar}>{c.physicalAbility}</Avatar>
@@ -184,6 +194,18 @@ class RPG extends React.Component {
 													value={c.strength}
 													type="number"
 													onChange={handleChange('strength')}
+													margin="dense"
+												/>
+											</ListItemText>
+										</ListItem>
+										<ListItem className={classes.nested}>
+											<ListItemText>
+												<TextField
+													label="Speed"
+													className={classes.textField}
+													value={c.speed}
+													type="number"
+													onChange={handleChange('speed')}
 													margin="dense"
 												/>
 											</ListItemText>
