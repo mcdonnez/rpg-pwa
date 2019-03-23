@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Stats from './Stats';
 import Defend from './Defend';
+import SkillUse from './SkillUse';
 
 const styles = theme => ({
 	root: {
@@ -37,7 +38,7 @@ class RPG extends React.Component {
 		const characterType = props.match.params.character;
 		const Character = characters[characterType] || characters['default'];
 		this.state = {
-			value: 0,
+			value: 1,
 			character: new Character()
 		};
 	}
@@ -74,7 +75,7 @@ class RPG extends React.Component {
 					</Tabs>
 				</AppBar>
 				{value === 0 && <TabContainer><Stats character={this.state.character} handleChange={this.handleCharacterChange}></Stats></TabContainer>}
-				{value === 1 && <TabContainer>Skill Use</TabContainer>}
+				{value === 1 && <TabContainer><SkillUse character={this.state.character}></SkillUse></TabContainer>}
 				{value === 2 && <TabContainer><Defend character={this.state.character}></Defend></TabContainer>}
 			</div>
 		);

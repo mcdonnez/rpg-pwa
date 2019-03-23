@@ -6,7 +6,7 @@ const fs = require('fs');
 module.exports = {
 	entry: ['./src/app.js'],
 	output: {
-		filename: `[name].js`,
+		filename: `[name].[chunkhash].js`,
 		path: path.resolve(__dirname, '../dist'),
 	},
 	devServer: {
