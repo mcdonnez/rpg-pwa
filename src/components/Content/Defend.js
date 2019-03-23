@@ -99,31 +99,31 @@ class RPG extends React.Component {
 						<Table className={classes.table}>
 							<TableHead>
 								<TableRow>
-									<TableCell padding="dense">Armor</TableCell>
-									<TableCell align="center" padding="dense">Defense</TableCell>
-									<TableCell align="center" padding="dense">Block</TableCell>
-									<TableCell align="center" padding="dense">Hardened</TableCell>
+									<TableCell padding="checkbox">Armor</TableCell>
+									<TableCell align="center" padding="checkbox">Defense</TableCell>
+									<TableCell align="center" padding="checkbox">Block</TableCell>
+									<TableCell align="center" padding="checkbox">Hardened</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
 								{c.armorArray && c.armorArray.map((armor) => (
 									<TableRow key={armor.name}>
-										<TableCell padding="dense" component="th" scope="row">{armor.name}</TableCell>
-										<TableCell align="center" padding="dense">{armor.bonus}</TableCell>
-										<TableCell align="center" padding="dense">{armor.block}</TableCell>
-										<TableCell align="center" padding="dense">{armor.hardened}</TableCell>
+										<TableCell padding="checkbox" component="th" scope="row">{armor.name}</TableCell>
+										<TableCell align="center" padding="checkbox">{armor.bonus}</TableCell>
+										<TableCell align="center" padding="checkbox">{armor.block}</TableCell>
+										<TableCell align="center" padding="checkbox">{armor.hardened}</TableCell>
 									</TableRow>
 								))}
 							</TableBody>
 						</Table>
 					</CardContent>
 				</Card>
-				<Card classes={{root: classes.card}}>
+				{/* <Card classes={{root: classes.card}}>
 					<CardHeader title="Results"/>
 					<CardContent>
 
 					</CardContent>
-				</Card>
+				</Card> */}
 			</div>
 		);
 	}
