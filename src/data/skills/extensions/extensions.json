@@ -1,0 +1,94 @@
+[
+	{
+		"name": "Flank & Gank",
+		"prerequisites": [
+			{
+				"skill": "Simple Blades",
+				"aspect": "Precise"
+			},
+			{
+				"skill": "Simple Blades",
+				"aspect": "Quick"
+			}
+		],
+		"effort": "1",
+		"bonus": "",
+		"effect": "If target has lower momentum than you and an ally has attacked it in this round, move 3 elements to bid of your choice."
+	},
+	{
+		"name": "Helpful Parry",
+		"prerequisites": [
+			{
+				"skill": "Parry",
+				"aspect": "Proficient"
+			}
+		],
+		"effort": "",
+		"bonus": "d:coordination",
+		"effect": "If enemy attacking ally and both are within reach, you can roll parry and add it to ally's defense[once per moment]"
+	},
+	{
+		"name": "Furious Charge",
+		"prerequisites": [
+			{
+				"skill": "Athletics",
+				"aspect": "Proficient"
+			}
+		],
+		"effort": "",
+		"bonus": "",
+		"effect": "You can move without disrupting preparation for a melee attack"
+	},
+	{
+		"name": "Cleave",
+		"prerequisites": [
+			{
+				"skill": "Axes",
+				"aspect": "Proficient"
+			}
+		],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Add 1 adjacent target to attack"
+	},
+	{
+		"name": "Intense Heat",
+		"prerequisites": [
+			{
+				"skill": "Fire",
+				"aspect": "Proficient"
+			},
+			{
+				"ability": "Focus",
+				"min":  "3"
+			}
+		],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Add +1 to all elements"
+	},
+	{
+		"name": "Penetrating Arrow",
+		"prerequisites": [
+			{
+				"skill": "Long Box",
+				"aspect": "Expert"
+			}
+		],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Include second target in attack if second target is behind first in straight line"
+	},
+	{
+		"name": "Take Injury",
+		"prerequisites": [
+			{
+				"skill": "Healing",
+				"aspect": "Proficient"
+			}
+		],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Take target’s injury upon yourself (# up to your Focus)"
+	}
+]

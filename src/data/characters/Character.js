@@ -1,9 +1,17 @@
+import extensions from '../skills/extensions';
+import skills from '../skills';
+import aspects from '../skills/aspects';
+import armors from '../armors';
+import weapons from '../weapons';
+
 class Character {
 	constructor(options = {}) {
-		this.name = options.name || 'Base Character',
+		this.name = options.name || 'Base Character';
+		this.id = options.id || 'custom';
+		this.description = options.description;
 		this.fortitude = options.fortitude || 0;
 		this.resolve = options.resolve || 0;
-		this.resilience = options.resilience || 0;
+
 		this.size = options.size || 0;
 		this.bulk = options.bulk || 0;
 		this.burden = options.burden || 0;
@@ -26,10 +34,14 @@ class Character {
 		this.spirit = 0;
 		this.truth = 0;
 
-		this.weapon = options.weapon;
-		this.armorArray = options.armors;
-		this.aspectArray = options.aspects;
-		this.ext = options.ext;
+		this.weapons = (options.weapons || []).map(weapon => weapons[weapon]);
+		this.armors = (options.armors || []).map(armor => armors[armor]);
+		this.skills = (options.skills || []).map(skill => ({
+			name: skill.skill,
+			ability: skills[skill.skill] ? skills[skill.skill].ability : 'n/a',
+			aspects: skill.aspects.map(aspect => aspects[aspect])
+		}));
+		this.extensions = (options.extensions || []).map(extension => extensions[extension]);
 
 		this.movement = this.size + this.speed - this.burden / 2;
 		this.calculateAbilities();

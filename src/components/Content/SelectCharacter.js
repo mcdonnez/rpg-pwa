@@ -24,7 +24,6 @@ const styles = theme => ({
 class RPG extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 	}
 
 	static propTypes = {

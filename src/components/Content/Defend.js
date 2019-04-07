@@ -42,7 +42,6 @@ const styles = theme => ({
 class RPG extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 	}
 
 	static propTypes = {
@@ -64,7 +63,6 @@ class RPG extends React.Component {
 
 	render() {
 		const {classes, character: c, handleChange} = this.props;
-		console.log(c);
 
 		return (
 			<div className={classes.root}>

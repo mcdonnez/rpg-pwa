@@ -1,0 +1,74 @@
+[
+	{
+		"name": "Athletics",
+		"ability": "Strength"
+	},
+	{
+		"name": "Animal Handling",
+		"ability": "Insight"
+	},
+	{
+		"name": "Medicine",
+		"ability": "Education"
+	},
+	{
+		"name": "Survival",
+		"ability": "Perception"
+	},
+	{
+		"name": "Thievery",
+		"ability": "Coordination"
+	},
+	{
+		"name": "Stealth",
+		"ability": "Coordination"
+	},
+	{
+		"name": "History",
+		"ability": "Education"
+	},
+	{
+		"name": "Religion",
+		"ability": "Education"
+	},
+	{
+		"name": "Engineering",
+		"ability": "Education"
+	},
+	{
+		"name": "Influence",
+		"ability": "Wit"
+	},
+	{
+		"name": "Simple Blades",
+		"ability": "Coordination"
+	},
+	{
+		"name": "Advanced Blades",
+		"ability": "Coordination"
+	},
+	{
+		"name": "Simple Bludgeons",
+		"ability": "Strength"
+	},
+	{
+		"name": "Advanced Bludgeons",
+		"ability": "Strength"
+	},
+	{
+		"name": "Simple Polearms",
+		"ability": "Coordination"
+	},
+	{
+		"name": "Advanced Polearms",
+		"ability": "Coordination"
+	},
+	{
+		"name": "Crossbows",
+		"ability": "Coordination"
+	},
+	{
+		"name": "Bows",
+		"ability": "Coordination"
+	}
+]

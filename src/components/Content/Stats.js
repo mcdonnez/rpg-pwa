@@ -34,7 +34,6 @@ const styles = theme => ({
 class RPG extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 	}
 
 	static propTypes = {
@@ -90,18 +89,6 @@ class RPG extends React.Component {
 													value={c.resolve}
 													type="number"
 													onChange={handleChange('resolve')}
-													margin="dense"
-												/>
-											</ListItemText>
-										</ListItem>
-										<ListItem>
-											<ListItemText>
-												<TextField
-													label="Resilience"
-													className={classes.textField}
-													value={c.resilience}
-													type="number"
-													onChange={handleChange('resilience')}
 													margin="dense"
 												/>
 											</ListItemText>

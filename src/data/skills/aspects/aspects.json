@@ -1,0 +1,79 @@
+[
+	{
+		"name": "Proficient",
+		"prerequisites": "",
+		"effort": "",
+		"bonus": "d:ability",
+		"effect": ""
+	},
+	{
+		"name": "Precise",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Reroll 1 die or add 1 to its value"
+	},
+	{
+		"name": "Quick",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Copy any element from bid 1 to bid 2"
+	},
+	{
+		"name": "Reliable",
+		"prerequisites": ["Proficient"],
+		"effort": "",
+		"bonus": "",
+		"effect": "Reroll a 1"
+	},
+	{
+		"name": "Powerful",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "d:strength",
+		"effect": ""
+	},
+	{
+		"name": "Brutal",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Duplicate any element in bid 1"
+	},
+	{
+		"name": "Extend",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Increase range of attack by (wielding average x20)’"
+	},
+	{
+		"name": "Expand",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Increase area of effect of attack by (wielding average)’ [radius]"
+	},
+	{
+		"name": "Parry",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "d:coordination",
+		"effect": ""
+	},
+	{
+		"name": "Expert",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": ""
+	},
+	{
+		"name": "Displace",
+		"prerequisites": ["Proficient"],
+		"effort": "1",
+		"bonus": "",
+		"effect": "Move point of origin from yourself by up to (wielding average x10)’"
+	}
+]

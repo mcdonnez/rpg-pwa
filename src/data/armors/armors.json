@@ -1,0 +1,58 @@
+[
+	{
+		"name": "Leather (Half Coverage)",
+		"bonus": "2",
+		"spread": "",
+		"block": "",
+		"hardened": "",
+		"burden": "1"
+	},
+	{
+		"name": "Leather (Full Coverage)",
+		"bonus": "4",
+		"spread": "",
+		"block": "",
+		"hardened": "",
+		"burden": "2"
+	},
+	{
+		"name": "Chain (Half Coverage)",
+		"bonus": "3",
+		"spread": "",
+		"block": "",
+		"hardened": "1",
+		"burden": "3"
+	},
+	{
+		"name": "Chain (Full Coverage)",
+		"bonus": "6",
+		"spread": "",
+		"block": "",
+		"hardened": "2",
+		"burden": "6"
+	},
+	{
+		"name": "Plate (Half Coverage)",
+		"bonus": "5",
+		"spread": "",
+		"block": "",
+		"hardened": "3",
+		"burden": "5"
+	},
+	{
+		"name": "Plate (Full Coverage)",
+		"bonus": "10",
+		"spread": "",
+		"block": "",
+		"hardened": "5",
+		"burden": "10"
+	},
+	{
+		"name": "Shield",
+		"bonus": "6",
+		"spread": "2",
+		"block": "1",
+		"hardened": "",
+		"burden": ""
+	}
+]

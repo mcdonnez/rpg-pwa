@@ -1,0 +1,101 @@
+[
+	{
+		"name": "Healer",
+		"id": "healer",
+		"description": "Heal things",
+		"fortitude": 4,
+		"resolve": 5,
+		"coordination": 3,
+		"perception": 3,
+		"speed": 3,
+		"strength": 3,
+		"education": 4,
+		"intellect": 3,
+		"insight": 3,
+		"wit": 2,
+		"entropy": 0,
+		"focus": 5,
+		"spirit": 0,
+		"truth": 3,
+		"size": 4,
+		"bulk": 3,
+		"burden": 9,
+		"skills": [
+			{
+				"skill": "Simple Bludgeons",
+				"aspects": ["Proficient"]
+			},
+			{
+				"skill": "Healing",
+				"aspects": [
+					"Proficient",
+					"Extend",
+					"Expand"
+				]
+			}
+		],
+		"weapons": ["Mace"],
+		"extensions": ["Take Injury"],
+		"armors": ["Chain (Full Coverage)", "Shield"]
+	},
+	{
+		"name": "Tanky Fighter",
+		"id": "fighter",
+		"description": "Do you like hitting stuff? Become a fighter!",
+		"fortitude": 5,
+		"resolve": 3,
+		"coordination": 4,
+		"perception": 3,
+		"speed": 3,
+		"strength": 5,
+		"education": 2,
+		"intellect": 2,
+		"insight": 3,
+		"wit": 2,
+		"entropy": 0,
+		"focus": 0,
+		"spirit": 0,
+		"truth": 0,
+		"size": 7,
+		"bulk": 6,
+		"burden": 12,
+		"skills": [
+			{
+				"skill": "Advanced Blades",
+				"aspects": ["Proficient", "Reliable", "Expert"]
+			}
+		],
+		"extensions": ["Helpful Parry"],
+		"armors": ["Plate (Half Coverage)", "Shield"]
+	},
+	{
+		"name": "Sneaky Rogue",
+		"id": "rogue",
+		"description": "Sneak around and stab things!",
+		"fortitude": 3,
+		"resolve": 3,
+		"coordination": 5,
+		"perception": 4,
+		"speed": 5,
+		"strength": 3,
+		"education": 2,
+		"intellect": 3,
+		"insight": 4,
+		"wit": 4,
+		"entropy": 0,
+		"focus": 0,
+		"spirit": 0,
+		"truth": 0,
+		"size": 5,
+		"bulk": 3,
+		"burden": 4,
+		"skills": [
+			{
+				"skill": "Simple Blades",
+				"aspects": ["Proficient", "Precise", "Quick", "Parry", "Expert"]
+			}
+		],
+		"extensions": ["Flank & Gank"],
+		"armors": ["Leather (Full Coverage)"]
+	}
+]

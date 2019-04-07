@@ -11,6 +11,7 @@ import Modal from '@material-ui/core/Modal';
 import CardHeader from '@material-ui/core/CardHeader';
 import {Link as RouterLink} from 'react-router-dom';
 import Link from '@material-ui/core/Link';
+import characters from '../../../data/characters';
 
 const styles = theme => ({
 	card: {
@@ -56,9 +57,12 @@ const styles = theme => ({
 		backgroundColor: theme.palette.grey[200],
 		padding: theme.spacing.unit * 4,
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: 'space-evenly',
 		alignItems: 'center',
 		flexWrap: 'wrap'
+	},
+	cardContent: {
+		height: 100
 	}
 });
 
@@ -118,21 +122,23 @@ class SimpleCard extends React.Component {
 					<div style={getModalStyle()} className={classes.paper}>
 						<Typography variant="h4" className={classes.header}>Choose A Character</Typography>
 						<div className={classes.content}>
-							<Card className={classes.characterCard}>
-								<Link component={() => (
-									<RouterLink to="/character/fighter" className={classes.link}>
-										<CardActionArea onClick={() => { }}>
-											<CardHeader title={'Fighter'} />
-											<CardContent>
-												<Typography component="p">
-													Do you like hitting stuff? Become a fighter!
-												</Typography>
-											</CardContent>
-										</CardActionArea>
-									</RouterLink>
-								)} color="inherit" underline="none">
-								</Link>
-							</Card>
+							{Object.values(characters).filter(character => character.id !== 'custom').map(character => (
+								<Card className={classes.characterCard} key={character.id}>
+									<Link component={() => (
+										<RouterLink to={`/character/${character.id}`} className={classes.link}>
+											<CardActionArea onClick={() => { }}>
+												<CardHeader title={character.name} />
+												<CardContent className={classes.cardContent}>
+													<Typography component="p">
+														{character.description}
+													</Typography>
+												</CardContent>
+											</CardActionArea>
+										</RouterLink>
+									)} color="inherit" underline="none">
+									</Link>
+								</Card>
+							))}
 						</div>
 					</div>
 				</Modal>

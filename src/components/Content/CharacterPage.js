@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import characters from '../../characters';
+import characters from '../../data/characters';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -9,6 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import Stats from './Stats';
 import Defend from './Defend';
 import SkillUse from './SkillUse';
+import aspects from '../../data/skills/aspects';
+import extensions from '../../data/skills/extensions';
+import skills from '../../data/skills';
+import armors from '../../data/armors';
+import weapons from '../../data/weapons';
 
 const styles = theme => ({
 	root: {
@@ -39,7 +44,7 @@ class RPG extends React.Component {
 		const Character = characters[characterType] || characters['default'];
 		this.state = {
 			value: 1,
-			character: new Character()
+			character: Character
 		};
 	}
 

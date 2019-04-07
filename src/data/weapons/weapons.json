@@ -1,0 +1,42 @@
+[
+	{
+		"name": "Dagger",
+		"bonus": "3",
+		"spread": "",
+		"reach": "1",
+		"burden": "1",
+		"effect": ""
+	},
+	{
+		"name": "Arming Sword",
+		"bonus": "5",
+		"spread": "",
+		"reach": "3",
+		"burden": "2",
+		"effect": ""
+	},
+	{
+		"name": "Mace",
+		"bonus": "4",
+		"spread": "",
+		"reach": "2",
+		"burden": "3",
+		"effect": ""
+	},
+	{
+		"name": "Long Bow",
+		"bonus": "3",
+		"spread": "",
+		"reach": "",
+		"burden": "4",
+		"effect": "Piercing 3"
+	},
+	{
+		"name": "Great Axe",
+		"bonus": "7",
+		"spread": "",
+		"reach": "4",
+		"burden": "5",
+		"effect": ""
+	}
+]
