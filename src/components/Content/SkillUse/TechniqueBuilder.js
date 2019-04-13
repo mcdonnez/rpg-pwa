@@ -6,6 +6,9 @@ import Avatar from '@material-ui/core/Avatar';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import {CardContent, CardActions} from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -51,9 +54,12 @@ const styles = theme => ({
 		margin: theme.spacing.unit,
 		marginBottom: theme.spacing.unit * 2,
 	},
+	aspect: {
+		paddingLeft: 0
+	},
 	aspectToggles: {
 		display: 'flex',
-		flexDirection: 'row'
+		flexDirection: 'column'
 	},
 	resultHeader: {
 		padding: theme.spacing.unit / 2
@@ -70,11 +76,12 @@ class RPG extends React.Component {
 			tool: '',
 			aspects: {
 				proficient: false,
-				precise: false,
-				reliable: false
+				Reliable: false,
+				Expert: false
 			},
 			extension: false,
-			technique: new Technique(props.character)
+			technique: new Technique(props.character),
+			extensionChecked: false
 		};
 	}
 
@@ -110,7 +117,7 @@ class RPG extends React.Component {
 
 	handleAspectChange = aspect => event => {
 		let technique = this.state.technique;
-		if (event.target.checked) {
+		if (!this.state.aspects[aspect.name]) {
 			technique.addAspect(aspect);
 		} else {
 			technique.removeAspect(aspect);
@@ -118,7 +125,7 @@ class RPG extends React.Component {
 		this.setState({
 			aspects: {
 				...this.state.aspects,
-				[aspect.name]: event.target.checked
+				[aspect.name]: !this.state.aspects[aspect.name]
 			},
 			technique: technique
 		});
@@ -126,13 +133,13 @@ class RPG extends React.Component {
 
 	handleExtensionChange = extension => event => {
 		let technique = this.state.technique;
-		if (event.target.checked) {
+		if (!this.state.extensionChecked) {
 			technique.addExtension(extension);
 		} else {
 			technique.removeExtension(extension);
 		}
 		this.setState({
-			extensionChecked: event.target.checked
+			extensionChecked: !this.state.extensionChecked
 		});
 	}
 
@@ -196,42 +203,41 @@ class RPG extends React.Component {
 					{skill && <div className={classes.cardContent}>
 						<FormControl component="fieldset" className={classes.aspectControl}>
 							<FormLabel component="legend">Aspects</FormLabel>
-							<FormGroup className={classes.aspectToggles}>
+							<List>
 								{skill.aspects && skill.aspects.map(aspect => (
-									<FormControlLabel
-										key={aspect.name}
-										control={
-											<Switch
-												checked={aspects[aspect.name]}
-												onChange={this.handleAspectChange(aspect)}
-												value="yes"
-												color="primary"
-											/>
-										}
-										label={aspect.name}
-									/>
-								))}
-							</FormGroup>
-						</FormControl>
-					</div>}
-					{skill && <FormControl component="fieldset" className={classes.formControl}>
-						<FormLabel component="legend">Extension</FormLabel>
-						<FormGroup className={classes.cardContent}>
-							{c.extensions.map(extension => (
-								<FormControlLabel
-									key={extension.name}
-									control={
+									<ListItem key={aspect.name} role={undefined} button onClick={this.handleAspectChange(aspect)} className={classes.aspect}>
 										<Switch
-											checked={extensionChecked}
-											onChange={this.handleExtensionChange(extension)}
+											checked={!!this.state.aspects[aspect.name]}
+											onChange={() => {}}
 											value="yes"
 											color="primary"
 										/>
-									}
-									label={extension.name}
-								/>
+										<ListItemText primary={aspect.name} secondary={<React.Fragment>
+											{aspect.bonus && <Typography variant="subtitle2">{this.state.technique.calculateDice(aspect).dice} ({aspect.bonus})</Typography>}
+											<Typography variant="subtitle2">{aspect.effect}</Typography>
+										</React.Fragment>}/>
+									</ListItem>
+								))}
+							</List>
+						</FormControl>
+					</div>}
+					{skill && <FormControl component="fieldset" className={classes.aspectControl}>
+						<FormLabel component="legend">Extension</FormLabel>
+						<List>
+							{c.extensions.map(extension => (
+								<ListItem key={extension.name} role={undefined} button onClick={this.handleExtensionChange(extension)} className={classes.aspect}>
+									<Switch
+										checked={extensionChecked}
+										value="yes"
+										color="primary"
+									/>
+									<ListItemText primary={extension.name} secondary={<React.Fragment>
+										{extension.bonus && <Typography variant="subtitle2">{this.state.technique.calculateDice(extension).dice} ({extension.bonus})</Typography>}
+										<Typography variant="subtitle2">{extension.effect}</Typography>
+									</React.Fragment>}/>
+								</ListItem>
 							))}
-						</FormGroup>
+						</List>
 					</FormControl>}
 					<CardHeader classes={{root: classes.resultHeader}} title="Result"/>
 					<CardHeader
@@ -244,7 +250,7 @@ class RPG extends React.Component {
 							variant: 'h5'
 						}}
 						subheader={<React.Fragment>
-							<Typography variant="subtitle2">{techniqueResult.bonuses && techniqueResult.bonuses.map(bonus => bonus.bonus).filter(bonus => bonus.length > 0).join(', ')}</Typography>
+							<Typography variant="subtitle2">{techniqueResult.dice && techniqueResult.dice.join(', ')}</Typography>
 							{techniqueResult.effects && techniqueResult.effects.map(effect => (
 								<Typography variant="subtitle2" key={effect.name}>{effect.effect}</Typography>
 							))}
