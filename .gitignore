@@ -12,3 +12,4 @@ extension/*.svg
 extension/*.png
 dist/
 odo-assistant.zip
+.env
