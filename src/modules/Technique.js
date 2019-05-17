@@ -81,8 +81,9 @@ class TechniqueBuilder {
 		let abilityMatch = aspect.bonus.match(/d\:(\w+)/);
 		if (abilityMatch) {
 			let ability = abilityMatch[1] !== 'ability' ? abilityMatch[1] : this.skill.ability.toLowerCase();
-			let dice = skillBonusToDie[this.character[ability] / 2];
+			let dice = skillBonusToDie[Math.ceil(this.character[ability] / 2)];
 			aspect.dice = dice;
+			console.log(ability, dice, skillBonusToDie, this.character);
 		}
 		return aspect;
 	}
@@ -116,6 +117,7 @@ class TechniqueBuilder {
 		let weaponBonus = this.item.bonus ? parseInt(this.item.bonus) : 0;
 		let score = naturalAbility + bonusAspects + weaponBonus;
 		let dice = this.calculateBaseDice(score);
+		console.log(bonuses);
 		let bonusDice = bonuses.map(bonus => bonus.dice).filter(dice => !!dice && dice.length > 0);
 		dice = dice.concat(bonusDice);
 

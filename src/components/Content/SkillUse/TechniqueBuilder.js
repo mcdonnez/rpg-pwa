@@ -84,7 +84,7 @@ const styles = theme => ({
 
 });
 
-class RPG extends React.Component {
+class TechniqueBuilder extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -267,7 +267,7 @@ class RPG extends React.Component {
 										color="primary"
 									/>
 									<ListItemText primary={'Proficient'} secondary={<React.Fragment>
-										<Typography variant="subtitle2">{'Plus 2 to base score'}</Typography>
+										<Typography component="span" variant="subtitle2">{'Plus 2 to base score'}</Typography>
 									</React.Fragment>}/>
 								</ListItem>
 							</List>
@@ -284,7 +284,7 @@ class RPG extends React.Component {
 										color="primary"
 									/>
 									<ListItemText primary={'Proficient'} secondary={<React.Fragment>
-										<Typography variant="subtitle2">{'Plus 2 to base score'}</Typography>
+										<Typography component="span" variant="subtitle2">{'Plus 2 to base score'}</Typography>
 									</React.Fragment>}/>
 								</ListItem>
 							</List>
@@ -304,8 +304,8 @@ class RPG extends React.Component {
 											color="primary"
 										/>
 										<ListItemText primary={aspect.name} secondary={<React.Fragment>
-											{aspect.bonus && <Typography variant="subtitle2">{this.state.technique.calculateDice(aspect).dice} ({aspect.bonus})</Typography>}
-											<Typography variant="subtitle2">{aspect.effect}</Typography>
+											{aspect.bonus && <Typography component="span" variant="subtitle2">Add the following dice: {this.state.technique.calculateDice(aspect).dice}</Typography>}
+											<Typography component="span" variant="subtitle2">{aspect.effect}</Typography>
 										</React.Fragment>}/>
 									</ListItem>
 								))}
@@ -323,8 +323,8 @@ class RPG extends React.Component {
 										color="primary"
 									/>
 									<ListItemText primary={extension.name} secondary={<React.Fragment>
-										{extension.bonus && <Typography variant="subtitle2">{this.state.technique.calculateDice(extension).dice} ({extension.bonus})</Typography>}
-										<Typography variant="subtitle2">{extension.effect}</Typography>
+										{extension.bonus && <Typography component="span" variant="subtitle2">{this.state.technique.calculateDice(extension).dice} ({extension.bonus})</Typography>}
+										<Typography component="span" variant="subtitle2">{extension.effect}</Typography>
 									</React.Fragment>}/>
 								</ListItem>
 							))}
@@ -361,4 +361,4 @@ class RPG extends React.Component {
 	}
 }
 
-export default withStyles(styles)(RPG);
+export default withStyles(styles)(TechniqueBuilder);

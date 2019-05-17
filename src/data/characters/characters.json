@@ -65,6 +65,7 @@
 			}
 		],
 		"extensions": ["Helpful Parry"],
+		"weapons": ["Arming Sword"],
 		"armors": ["Plate (Half Coverage)", "Shield"]
 	},
 	{
@@ -95,6 +96,7 @@
 			}
 		],
 		"extensions": ["Flank & Gank"],
+		"weapons": ["Dagger"],
 		"armors": ["Leather (Full Coverage)"]
 	}
 ]
