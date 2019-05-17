@@ -63,7 +63,6 @@ class TechniqueBuilder {
 	}
 
 	calculateBaseDice(score = 0) {
-		console.log(score);
 		if (isNaN(score)) {
 			return [];
 		}
@@ -116,9 +115,8 @@ class TechniqueBuilder {
 		let bonusAspects = 0;
 		let weaponBonus = this.item.bonus ? parseInt(this.item.bonus) : 0;
 		let score = naturalAbility + bonusAspects + weaponBonus;
-		console.log(score, naturalAbility, bonusAspects, weaponBonus, this.item);
 		let dice = this.calculateBaseDice(score);
-		let bonusDice = bonuses.map(bonus => bonus.dice).filter(dice => dice.length > 0);
+		let bonusDice = bonuses.map(bonus => bonus.dice).filter(dice => !!dice && dice.length > 0);
 		dice = dice.concat(bonusDice);
 
 		return {

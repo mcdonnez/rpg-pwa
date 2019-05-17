@@ -73,7 +73,7 @@ const styles = theme => ({
 		backgroundColor: green[500],
 	},
 	twoEffort: {
-		backgroundColor: yellow[500],
+		backgroundColor: yellow[800],
 	},
 	threeEffort: {
 		backgroundColor: orange[500],
@@ -158,7 +158,6 @@ class RPG extends React.Component {
 	}
 
 	handleItemChange = (item, isProficient = false) => event => {
-		console.log(event, item, isProficient);
 		if (!item) {
 			item = this.props.character.weapons.find(weapon => event.target.value === weapon.name);
 		}

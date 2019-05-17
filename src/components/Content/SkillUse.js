@@ -67,10 +67,10 @@ class RPG extends React.Component {
 		return (
 			<div className={classes.root}>
 				<TechniqueBuilder character={c}></TechniqueBuilder>
-				<div className={classes.savedTechniques}>
+				{/* <div className={classes.savedTechniques}>
 					<Typography variant="h4" className={classes.header}>Saved Techniques</Typography>
 					<div className={classes.techniques}>
-						{/* <Card className={classes.card}>
+						<Card className={classes.card}>
 							<CardActionArea>
 								<CardHeader
 									avatar={
@@ -89,9 +89,9 @@ class RPG extends React.Component {
 									</React.Fragment>}
 								/>
 							</CardActionArea>
-						</Card> */}
+						</Card>
 					</div>
-				</div>
+				</div> */}
 
 			</div>
 		);
