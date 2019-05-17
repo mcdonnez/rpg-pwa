@@ -70,7 +70,7 @@ class RPG extends React.Component {
 				<div className={classes.savedTechniques}>
 					<Typography variant="h4" className={classes.header}>Saved Techniques</Typography>
 					<div className={classes.techniques}>
-						<Card className={classes.card}>
+						{/* <Card className={classes.card}>
 							<CardActionArea>
 								<CardHeader
 									avatar={
@@ -89,46 +89,7 @@ class RPG extends React.Component {
 									</React.Fragment>}
 								/>
 							</CardActionArea>
-						</Card>
-						<Card className={classes.card}>
-							<CardActionArea>
-								<CardHeader
-									avatar={
-										<Avatar aria-label="Effort" className={classes.avatar}>
-											4
-										</Avatar>
-									}
-									title="Fire & Ice"
-									titleTypographyProps={{
-										variant: 'h5'
-									}}
-									subheader={<React.Fragment>
-										<Typography variant="subtitle2">2 d10</Typography>
-										<Typography variant="subtitle2">Dual Wield Attack</Typography>
-										<Typography variant="subtitle2">Damage is split between Fire & Ice Damage </Typography>
-									</React.Fragment>}
-								/>
-							</CardActionArea>
-						</Card>
-						<Card className={classes.card}>
-							<CardActionArea>
-								<CardHeader
-									avatar={
-										<Avatar aria-label="Effort" className={classes.avatar}>
-											2
-										</Avatar>
-									}
-									title="Thunderous Smite"
-									titleTypographyProps={{
-										variant: 'h5'
-									}}
-									subheader={<React.Fragment>
-										<Typography variant="subtitle2">1 d10</Typography>
-										<Typography variant="subtitle2">Enemy must make a saving throw</Typography>
-									</React.Fragment>}
-								/>
-							</CardActionArea>
-						</Card>
+						</Card> */}
 					</div>
 				</div>
 

@@ -32,12 +32,18 @@ class TechniqueBuilder {
 		this.ability = '';
 	}
 
-	addItem(item) {
-		this.item = item;
+	addItem(item, isProficient = false) {
+		if (!item || item === '') {
+			this.item = {};
+		} else {
+			this.item = item;
+			this.item.isProficient = isProficient;
+		}
 	}
 
-	addSkill(skill) {
+	addSkill(skill, isProficient = false) {
 		this.skill = skill;
+		this.skill.isProficient = isProficient;
 	}
 
 	addAspect(aspect) {
@@ -54,6 +60,22 @@ class TechniqueBuilder {
 
 	removeExtension(extension) {
 		delete this.extensions[extension.name];
+	}
+
+	calculateBaseDice(score = 0) {
+		console.log(score);
+		if (isNaN(score)) {
+			return [];
+		}
+		let dice = [];
+		if (score < 13) {
+			dice = dice.concat(scoreToDie[score]);
+		} else {
+			dice = dice.concat(scoreToDie[12]);
+			let moreDice = this.calculateBaseDice(score - 12);
+			dice = dice.concat(moreDice);
+		}
+		return dice;
 	}
 
 	calculateDice(aspect) {
@@ -88,9 +110,14 @@ class TechniqueBuilder {
 		});
 
 		let ability = this.skill.ability ? this.skill.ability.toLowerCase() : '';
-		// Ability (physical/mental/wielding average) + Key ability / 2
-		let score = Math.ceil((this.character[ability] + this.character.physicalAbility + this.character.mentalAbility + this.character.wieldingAbility) / 2);
-		let dice = skillBonusToDie[score] || [];
+		let skillProficiency = this.skill.isProficient ? 2 : 0;
+		let weaponProficiency = this.item.isProficient ? 2 : 0;
+		let naturalAbility = this.character[ability] + skillProficiency + weaponProficiency;
+		let bonusAspects = 0;
+		let weaponBonus = this.item.bonus ? parseInt(this.item.bonus) : 0;
+		let score = naturalAbility + bonusAspects + weaponBonus;
+		console.log(score, naturalAbility, bonusAspects, weaponBonus, this.item);
+		let dice = this.calculateBaseDice(score);
 		let bonusDice = bonuses.map(bonus => bonus.dice).filter(dice => dice.length > 0);
 		dice = dice.concat(bonusDice);
 

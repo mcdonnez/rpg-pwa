@@ -24,6 +24,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Switch from '@material-ui/core/Switch';
 import Technique from '../../../modules/Technique';
+import Tooltip from '@material-ui/core/Tooltip';
+import red from '@material-ui/core/colors/red';
+import yellow from '@material-ui/core/colors/yellow';
+import orange from '@material-ui/core/colors/orange';
+import green from '@material-ui/core/colors/green';
 
 const styles = theme => ({
 	builderActions: {
@@ -63,7 +68,20 @@ const styles = theme => ({
 	},
 	resultHeader: {
 		padding: theme.spacing.unit / 2
-	}
+	},
+	oneEffort: {
+		backgroundColor: green[500],
+	},
+	twoEffort: {
+		backgroundColor: yellow[500],
+	},
+	threeEffort: {
+		backgroundColor: orange[500],
+	},
+	fourEffort: {
+		backgroundColor: red[500],
+	},
+
 });
 
 class RPG extends React.Component {
@@ -73,7 +91,7 @@ class RPG extends React.Component {
 		this.state = {
 			skill: '',
 			ability: '',
-			tool: '',
+			tool: 'None',
 			aspects: {
 				proficient: false,
 				Reliable: false,
@@ -96,7 +114,7 @@ class RPG extends React.Component {
 		this.setState({
 			skill: '',
 			ability: '',
-			tool: '',
+			tool: 'None',
 			aspects: {
 				proficient: false,
 				precise: false,
@@ -108,6 +126,14 @@ class RPG extends React.Component {
 		this.setState({
 			[event.target.name]: event.target.value,
 			ability: event.target.value.ability,
+		});
+	}
+
+	toggleSkillProficiency = (skill, isProficient) => {
+		let technique = this.state.technique;
+		technique.addSkill(skill, isProficient);
+		this.setState({
+			technique
 		});
 	}
 
@@ -131,6 +157,19 @@ class RPG extends React.Component {
 		});
 	}
 
+	handleItemChange = (item, isProficient = false) => event => {
+		console.log(event, item, isProficient);
+		if (!item) {
+			item = this.props.character.weapons.find(weapon => event.target.value === weapon.name);
+		}
+		let technique = this.state.technique;
+		technique.addItem(item, isProficient);
+		this.setState({
+			technique,
+			tool: item ? item.name : 'None'
+		});
+	}
+
 	handleExtensionChange = extension => event => {
 		let technique = this.state.technique;
 		if (!this.state.extensionChecked) {
@@ -143,10 +182,27 @@ class RPG extends React.Component {
 		});
 	}
 
+	getEffortColor = (effort, classes) => {
+		let map = {
+			1: classes.oneEffort,
+			2: classes.twoEffort,
+			3: classes.threeEffort,
+			4: classes.fourEffort
+		};
+
+		if (map[effort]) {
+			return map[effort];
+		} else {
+			return map[4];
+		}
+	}
+
 	render() {
 		const {classes, character: c} = this.props;
 		const {skill, ability, tool, aspects, extensionChecked, technique} = this.state;
 		const techniqueResult = technique.result;
+		let effortLevel = this.getEffortColor(techniqueResult.effort, classes);
+		console.log(this.state);
 
 		return (
 			<Card className={classes.cardBuilder}>
@@ -187,19 +243,55 @@ class RPG extends React.Component {
 								<InputLabel htmlFor="tool-helper">Tool</InputLabel>
 								<Select
 									value={tool}
-									onChange={this.handleChange}
+									onChange={this.handleItemChange()}
 									input={<Input name="tool" id="tool-helper" />}
 								>
-									<MenuItem value="">
+									<MenuItem value="None">
 										<em>None</em>
 									</MenuItem>
 									{c.weapons.map(weapon => (
-										<MenuItem key={weapon.name} value={weapon}>{weapon.name}</MenuItem>
+										<MenuItem key={weapon.name} value={weapon.name}>{weapon.name}</MenuItem>
 									))}
 								</Select>
 							</FormControl>
 						}
 					</div>
+					{skill && <div className={classes.cardContent}>
+						<FormControl component="fieldset" className={classes.aspectControl}>
+							<FormLabel component="legend">Skill Proficient</FormLabel>
+							<List>
+								<ListItem role={undefined} button onClick={() => this.toggleSkillProficiency(technique.skill, !technique.skill.isProficient)} className={classes.aspect}>
+									<Switch
+										checked={!!technique.skill.isProficient}
+										onChange={() => {}}
+										value="yes"
+										color="primary"
+									/>
+									<ListItemText primary={'Proficient'} secondary={<React.Fragment>
+										<Typography variant="subtitle2">{'Plus 2 to base score'}</Typography>
+									</React.Fragment>}/>
+								</ListItem>
+							</List>
+						</FormControl>
+						{tool !== 'None' &&
+						<FormControl component="fieldset" className={classes.aspectControl}>
+							<FormLabel component="legend">Weapon Proficient</FormLabel>
+							<List>
+								<ListItem role={undefined} button onClick={this.handleItemChange(technique.item, !technique.item.isProficient)} className={classes.aspect}>
+									<Switch
+										checked={!!technique.item.isProficient}
+										onChange={() => {}}
+										value="yes"
+										color="primary"
+									/>
+									<ListItemText primary={'Proficient'} secondary={<React.Fragment>
+										<Typography variant="subtitle2">{'Plus 2 to base score'}</Typography>
+									</React.Fragment>}/>
+								</ListItem>
+							</List>
+						</FormControl>
+						}
+					</div>}
 					{skill && <div className={classes.cardContent}>
 						<FormControl component="fieldset" className={classes.aspectControl}>
 							<FormLabel component="legend">Aspects</FormLabel>
@@ -242,9 +334,11 @@ class RPG extends React.Component {
 					<CardHeader classes={{root: classes.resultHeader}} title="Result"/>
 					<CardHeader
 						avatar={
-							<Avatar aria-label="Effort" className={classes.avatar}>
-								{techniqueResult.effort}
-							</Avatar>
+							<Tooltip title={'Effort Required'}>
+								<Avatar aria-label="Effort" className={classes.avatar + ' ' + effortLevel}>
+									{techniqueResult.effort}
+								</Avatar>
+							</Tooltip>
 						}
 						titleTypographyProps={{
 							variant: 'h5'

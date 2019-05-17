@@ -23,12 +23,11 @@
 		"skills": [
 			{
 				"skill": "Simple Bludgeons",
-				"aspects": ["Proficient"]
+				"aspects": []
 			},
 			{
 				"skill": "Healing",
 				"aspects": [
-					"Proficient",
 					"Extend",
 					"Expand"
 				]
@@ -62,7 +61,7 @@
 		"skills": [
 			{
 				"skill": "Advanced Blades",
-				"aspects": ["Proficient", "Reliable", "Expert"]
+				"aspects": ["Reliable", "Expert"]
 			}
 		],
 		"extensions": ["Helpful Parry"],
@@ -92,7 +91,7 @@
 		"skills": [
 			{
 				"skill": "Simple Blades",
-				"aspects": ["Proficient", "Precise", "Quick", "Parry", "Expert"]
+				"aspects": ["Precise", "Quick", "Parry", "Expert"]
 			}
 		],
 		"extensions": ["Flank & Gank"],
