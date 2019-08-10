@@ -11,4 +11,8 @@ router.route('/characters').get([
 	data.getCharacters
 ]);
 
+router.route('/content').get([
+	data.getContent
+]);
+
 module.exports = router;
