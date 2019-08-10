@@ -5,10 +5,12 @@ const development = require('./development/routes');
 const path = require('path');
 const morgan = require('morgan');
 const systemMiddleware = require('./api/middleware/system');
+const pretty = require('express-prettify');
 
 const app = express();
 
 app.use(morgan('tiny'));
+app.use(pretty({query: 'pretty'}));
 
 app.use('/development', development);
 app.use('/api', routes);
