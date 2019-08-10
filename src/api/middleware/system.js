@@ -20,3 +20,7 @@ module.exports.notFoundHandler = (req, res, next) => {
 module.exports.healthcheck = (req, res, next) => {
 	res.json({status: 'ok'});
 };
+
+module.exports.returnResult = (req, res, next) => {
+	res.json(req.result);
+};

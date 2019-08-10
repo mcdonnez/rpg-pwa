@@ -8,7 +8,8 @@ module.exports.getCharacters = asyncHandler(async (req, res, next) => {
 		range: 'Characters!A:Z',
 		auth: process.env.GOOGLE_API_KEY
 	});
-	res.json(response.data.values);
+	req.result = response.data.values;
+	next();
 });
 
 module.exports.getContent = asyncHandler(async (req, res, next) => {
@@ -48,5 +49,7 @@ module.exports.getContent = asyncHandler(async (req, res, next) => {
 		}
 		return item;
 	});
-	res.json(content);
+	req.result = content;
+	next();
 });
+

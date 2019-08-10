@@ -8,11 +8,13 @@ router.route('/healthcheck').get([
 ]);
 
 router.route('/characters').get([
-	data.getCharacters
+	data.getCharacters,
+	system.returnResult
 ]);
 
 router.route('/content').get([
-	data.getContent
+	data.getContent,
+	system.returnResult
 ]);
 
 module.exports = router;
