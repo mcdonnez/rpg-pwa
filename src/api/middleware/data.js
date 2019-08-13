@@ -8,7 +8,14 @@ module.exports.getCharacters = asyncHandler(async (req, res, next) => {
 		range: 'Characters!A:Z',
 		auth: process.env.GOOGLE_API_KEY
 	});
-	req.result = response.data.values;
+	let keys = response.data.values.shift();
+	let characters = response.data.values.map(values => {
+		return keys.reduce((map, key, i) => {
+			map[key] = values[i] || '';;
+			return map;
+		}, {});
+	});
+	req.result = characters;
 	next();
 });
 
