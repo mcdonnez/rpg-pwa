@@ -9,19 +9,6 @@ module.exports = {
 		filename: `[name].[chunkhash].js`,
 		path: path.resolve(__dirname, '../dist'),
 	},
-	devServer: {
-		historyApiFallback: true,
-		host: '0.0.0.0',
-		proxy: {
-			'/': {
-				target: `http://0.0.0.0:${process.env.PORT}`,
-				pathRewrite: function (path, req) {
-					return '/';
-				},
-			}
-		},
-		disableHostCheck: true
-	},
 	optimization: {
 		splitChunks: {
 			cacheGroups: {

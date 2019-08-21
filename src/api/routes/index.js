@@ -17,4 +17,9 @@ router.route('/content').get([
 	system.returnResult
 ]);
 
+router.route('/data/:sheet').get([
+	data.getDataFromSheet,
+	system.returnResult,
+]);
+
 module.exports = router;

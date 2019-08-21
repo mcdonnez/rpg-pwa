@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "description": "rpg-pwa",
   "scripts": {
-    "start": "npm run build:dev -- --progress",
+    "start": "node ./src/bin/run.js",
+    "dev": "npm run build:dev & nodemon node ./src/bin/run.js | bunyan",
     "lint": "eslint ./src --fix",
     "test": "npm run lint && npm run unit",
     "test:watch": "npm run unit -- --debug --watch",
-    "server": "node ./src/bin/run.js | bunyan",
     "unit": "jest --config config/jest.config.js --coverage --passWithNoTests",
     "build": "webpack --config ./config/webpack.config.js --mode production",
-    "build:dev": "webpack-dev-server --config config/webpack.config.js --mode development --watch",
-    "build:stage": "webpack --config ./config/webpack.config.js --mode production",
-    "serve": "npm run server"
+    "build:dev": "webpack --config config/webpack.config.js --mode development --watch"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -20,7 +18,7 @@
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.30",
     "amplitude-js": "^4.6.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^24.1.0",
@@ -62,5 +60,11 @@
     "webpack-dev-server": "^3.2.1",
     "workbox": "0.0.0",
     "workbox-webpack-plugin": "^3.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "nodemonConfig": {
+    "watch": ["dist", "src/api", "src/data"]
   }
 }
