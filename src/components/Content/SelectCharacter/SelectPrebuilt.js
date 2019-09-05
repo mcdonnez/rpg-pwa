@@ -11,7 +11,7 @@ import Modal from '@material-ui/core/Modal';
 import CardHeader from '@material-ui/core/CardHeader';
 import {Link as RouterLink} from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import characters from '../../../data/characters';
+import getCharacters from '../../../data/characters';
 
 const styles = theme => ({
 	card: {
@@ -83,7 +83,8 @@ class SimpleCard extends React.Component {
 	};
 
 	state = {
-		openModal: false
+		openModal: false,
+		characters: {}
 	}
 
 	openModal = () => {
@@ -98,8 +99,16 @@ class SimpleCard extends React.Component {
 		});
 	}
 
+	async componentDidMount() {
+		let characters = await getCharacters();
+		this.setState({
+			characters
+		});
+	}
+
 	render() {
 		const {classes} = this.props;
+		const {characters} = this.state;
 
 		return (
 			<Card className={classes.card}>

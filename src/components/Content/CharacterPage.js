@@ -6,14 +6,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Stats from './Stats';
+import CharacterBuilder from './CharacterBuilder';
 import Defend from './Defend';
 import SkillUse from './SkillUse';
-import aspects from '../../data/skills/aspects';
-import extensions from '../../data/skills/extensions';
-import skills from '../../data/skills';
-import armors from '../../data/armors';
-import weapons from '../../data/weapons';
+import data, {dataReady} from '../../data';
 
 const styles = theme => ({
 	root: {
@@ -44,13 +40,21 @@ class RPG extends React.Component {
 		const Character = characters[characterType] || characters['default'];
 		this.state = {
 			value: 1,
-			character: Character
+			character: Character,
+			data: {}
 		};
 	}
 
 	static propTypes = {
 		classes: PropTypes.object.isRequired,
 		match: PropTypes.any,
+	}
+
+	async componentDidMount() {
+		await dataReady;
+		this.setState({
+			data: data
+		});
 	}
 
 	handleChange = (event, value) => {
@@ -74,14 +78,14 @@ class RPG extends React.Component {
 			<div className={classes.root}>
 				<AppBar position="static" classes={{root: classes.appBar}}>
 					<Tabs value={value} onChange={this.handleChange}>
-						<Tab label="Stats" />
+						<Tab label="Character" />
 						<Tab label="Skill Use" />
 						<Tab label="Defend" />
 					</Tabs>
 				</AppBar>
-				{value === 0 && <TabContainer><Stats character={this.state.character} handleChange={this.handleCharacterChange}></Stats></TabContainer>}
-				{value === 1 && <TabContainer><SkillUse character={this.state.character}></SkillUse></TabContainer>}
-				{value === 2 && <TabContainer><Defend character={this.state.character}></Defend></TabContainer>}
+				{value === 0 && <TabContainer><CharacterBuilder character={this.state.character} data={this.state.data} handleChange={this.handleCharacterChange}></CharacterBuilder></TabContainer>}
+				{/* {value === 1 && <TabContainer><SkillUse character={this.state.character}></SkillUse></TabContainer>} */}
+				{/* {value === 2 && <TabContainer><Defend character={this.state.character}></Defend></TabContainer>} */}
 			</div>
 		);
 	}

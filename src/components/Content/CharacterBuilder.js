@@ -31,7 +31,7 @@ const styles = theme => ({
 	}
 });
 
-class RPG extends React.Component {
+class CharacterBuilder extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -40,6 +40,16 @@ class RPG extends React.Component {
 		classes: PropTypes.object.isRequired,
 		character: PropTypes.object,
 		handleChange: PropTypes.func,
+		data: PropTypes.shape({
+			ID: PropTypes.string,
+			Class: PropTypes.oneOf(['Class']),
+			Label: PropTypes.string,
+			Score: PropTypes.string,
+			MaxScore: PropTypes.number,
+			Temp: PropTypes.number,
+			Total: PropTypes.number,
+			'Web Link': PropTypes.string,
+		}),
 	}
 
 	state = {
@@ -55,14 +65,32 @@ class RPG extends React.Component {
 	};
 
 	render() {
-		const {classes, character: c, handleChange} = this.props;
+		const {classes, character: c, handleChange, data} = this.props;
 
 		return (
 			<div className={classes.root}>
 				<div className={classes.root} style={{flexDirection: 'column'}}>
 					<Card classes={{root: classes.card}}>
 						<CardContent>
+							{/* {console.log(data)}
 							<List>
+								{data.Stats && data.Stats.map(stat => (
+									<ListItem key={stat.ID}>
+										<ListItemText>
+											<TextField
+												label={stat.Label}
+												className={classes.textField}
+												value={0}
+												// value={c[stat.ID]}
+												type="number"
+												onChange={handleChange(stat.ID)}
+												margin="dense"
+											/>
+										</ListItemText>
+									</ListItem>
+								))}
+							</List> */}
+							{/* <List>
 								<ListItem button onClick={this.handleClick('vitals')}>
 									<ListItemText primary="Vitals" primaryTypographyProps={{variant: 'headline'}} />
 									{this.state.vitals ? <ExpandLess /> : <ExpandMore />}
@@ -131,14 +159,14 @@ class RPG extends React.Component {
 										</ListItem>
 									</List>
 								</Collapse>
-							</List>
+							</List> */}
 						</CardContent>
 					</Card>
 				</div>
 				<div className={classes.root} style={{flexDirection: 'column'}}>
 					<Card className={classes.card}>
 						<CardContent>
-							<List>
+							{/* <List>
 								<ListItem>
 									<ListItemText primary="Abilities" primaryTypographyProps={{variant: 'headline'}} />
 								</ListItem>
@@ -319,7 +347,7 @@ class RPG extends React.Component {
 										</ListItem>
 									</List>
 								</Collapse>
-							</List>
+							</List> */}
 						</CardContent>
 					</Card>
 				</div>
@@ -328,4 +356,4 @@ class RPG extends React.Component {
 	}
 }
 
-export default withStyles(styles)(RPG);
+export default withStyles(styles)(CharacterBuilder);
